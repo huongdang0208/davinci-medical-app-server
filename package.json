@@ -1,0 +1,24 @@
+{
+  "name": "davinci-medical-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "create-react-app": "^5.0.1",
+    "express": "*",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "nodemon": "^2.0.22",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "author": "thu_huong",
+  "license": "MIT"
+}
