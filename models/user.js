@@ -11,6 +11,14 @@ const UserSchema = mongoose.Schema({
       type: String,
       required: true,
   },
+  age: {
+    type: Number,
+    required: false,
+  },
+  gender: {
+    type: String,
+    required: false,
+  },
   password: {
       type: String,
       required: true,
@@ -64,13 +72,13 @@ module.exports.comparePassword = (candidatePassword, hash, callback) => {
 }
 
 module.exports.updateUserInfo = async (user, updatedInfo) => {
-  console.log('update')
   try {
       let doc = await User.findOneAndUpdate({
         // _id: user._id,
         username: user.username,
+        age: updatedInfo.age,
+        gender: updatedInfo.gender,
         email: user.email,
-        // password: user.password,
         address: updatedInfo.address,
         contactNumber: updatedInfo.contactNumber,
     })

@@ -7,7 +7,6 @@ const config = require('../config/database')
 const router = express.Router()
 
 router.post('/register', (req, res, next) => {
-    // console.log(req.body)
 
     let newUser = new User({
         name: req.body.name,
@@ -70,8 +69,10 @@ router.put('/update/:id', passport.authenticate('jwt', { session: false }), (req
         }
         if (user) {
             const updatedInfo = {
+                age: req.body.age,
+                gender: req.body.gender || 'female',
                 address: req.body.address,
-                contactNumber : req.body.contactNumber
+                contactNumber : req.body.contactNumber,
             }
             User.updateUserInfo(user, updatedInfo)
             res.json({ message: 'Success'})
@@ -79,13 +80,14 @@ router.put('/update/:id', passport.authenticate('jwt', { session: false }), (req
             return done(null, false)
         }
     })
-    console.log(req.user)
 })
 
 router.get('/user', passport.authenticate('jwt', { session: false }), (req, res, next) => {
   res.json({ user: {
     _id: req.user._id,
     username: req.user.username,
+    age: req.user.age,
+    gender: req.user.gender,
     email: req.user.email,
     address: req.user.address,
     contactNumber: req.user.contactNumber,
